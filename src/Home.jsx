@@ -1,12 +1,9 @@
-import "./App.css";
+import "./styles/Home.css";
 import React, { useState } from "react";
-import { TodoCounter } from "./components/TodoCounter";
-import { TodoSearch } from "./components/TodoSearch";
-import { TodoList } from "./components/TodoList";
-import { TodoItem } from "./components/TodoItem";
-import { CreateTodoButton } from "./components/CreateTodoButton";
+import { HomeUI } from "./HomeUI";
 
 //data mockeada
+
 const defaultTodos = [
   { text: "Cebolla", completed: false },
   { text: "Tomate", completed: false },
@@ -16,7 +13,7 @@ const defaultTodos = [
   { text: "Pepinos", completed: true },
 ];
 
-function App() {
+function Home() {
   const [todos, setTodos] = useState(defaultTodos);
   const [searchValue, setSearchValue] = useState("");
 
@@ -43,7 +40,7 @@ function App() {
     setTodos(newTodos);
   };
 
-  const DeleteTodo = (text) => {
+  const deleteTodo = (text) => {
     const todoIndex = todos.findIndex((todo) => todo.text === text);
     const newTodos = [...todos];
     newTodos.splice(todoIndex, 1); // esto corta en la lista
@@ -51,24 +48,18 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <TodoCounter total={totalTodos} completed={completedTodos} />
-      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
-      <TodoList>
-        {searchedTodos.map((todo) => (
-          <TodoItem
-            key={todo.text}
-            text={todo.text}
-            completed={todo.completed}
-            onComplete={() => completeTodo(todo.text)}
-            onDelete={() => DeleteTodo(todo.text)}
-
-          />
-        ))}
-      </TodoList>
-      <CreateTodoButton />
+    <div>
+      <HomeUI
+        totalTodos={totalTodos}
+        completedTodos={completedTodos}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+        searchedTodos={searchedTodos}
+        completeTodo={completeTodo}
+       deleteTodo={deleteTodo}
+      />
     </div>
   );
 }
 
-export default App;
+export default Home;
