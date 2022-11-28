@@ -7,11 +7,12 @@ export const CreateTodoButton = (props) => {
   const { openModal, setOpenModal } = useContext(TodoContext);
 
   const handleClick = () => {
-    if (openModal) {
-      setOpenModal(false);
-    } else {
-      setOpenModal(true);
-    }
+    setOpenModal(prevState => !prevState);
+    // if (openModal) {
+    //   setOpenModal(false);
+    // } else {
+    //   setOpenModal(true);
+    // }
   };
   return (
     <button className="CreateTodoButton" onClick={() => handleClick()}>

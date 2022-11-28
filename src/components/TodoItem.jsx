@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/TodoItem.css";
 
 export const TodoItem = (props) => {
-
   return (
     <>
       <li className="TodoItem">
@@ -21,7 +20,9 @@ export const TodoItem = (props) => {
         >
           {props.text}
         </p>
-        <span className="Icon Icon-delete" onClick={props.onDelete}>X</span>
+        <span className="Icon Icon-delete" onClick={props.onDelete}>
+          X
+        </span>
       </li>
     </>
   );

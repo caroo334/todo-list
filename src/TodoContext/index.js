@@ -30,11 +30,25 @@ export const TodoProvider = (props) => {
     });
   }
 
+  const addTodo = (text) => {
+    const newTodos = [...todos];
+    newTodos.push({
+      completed: false,
+      text,
+    });
+    saveTodos(newTodos);
+  };
+
   const completeTodo = (text) => {
     const todoIndex = todos.findIndex((todo) => todo.text === text);
     const newTodos = [...todos];
     newTodos[todoIndex].completed = true; // esto lo cambia a completado
     saveTodos(newTodos);
+    // const taskcompleted = (newTodos[todoIndex].completed = true);
+    // if (taskcompleted) {
+    //   newTodos[todoIndex].completed = false;
+    //   saveTodos(newTodos);
+    // }
   };
 
   const deleteTodo = (text) => {
@@ -53,6 +67,7 @@ export const TodoProvider = (props) => {
         searchValue,
         setSearchValue,
         searchedTodos,
+        addTodo,
         completeTodo,
         deleteTodo,
         openModal,

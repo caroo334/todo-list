@@ -12,7 +12,7 @@ export const TodoSearch = () => {
     <>
       <input
         className="TodoSearch"
-        placeholder="Agregar..."
+        placeholder="Buscar..."
         value={searchValue}
         onChange={onSearchValueChange}
       />

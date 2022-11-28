@@ -6,12 +6,14 @@ import { TodoItem } from "./components/TodoItem";
 import { CreateTodoButton } from "./components/CreateTodoButton";
 import { TodoContext } from "./TodoContext";
 import { Modal } from "./Modal";
+import { TodoForm } from "./components/TodoForm";
 
 export const HomeUI = () => {
   const {
     error,
     loading,
     searchedTodos,
+    addTodo,
     completeTodo,
     deleteTodo,
     openModal,
@@ -38,7 +40,7 @@ export const HomeUI = () => {
       </TodoList>
       {!!openModal && (
         <Modal>
-          <p>MODALLL</p>
+          <TodoForm addTodo={addTodo} />
         </Modal>
       )}
       <CreateTodoButton SetOpenModal={SetOpenModal} openModal={openModal} />
