@@ -10,8 +10,10 @@ export const TodoProvider = (props) => {
     loading,
     error,
   } = useLocalStorage("TODOS_V1", []);
-  // const [todos, saveTodos] = useLocalStorage("TODOS_V1", []);s
+
   const [searchValue, setSearchValue] = useState("");
+  const [openModal, setOpenModal] = useState(false);
+
   const completedTodos = todos.filter((todo) => !!todo.completed).length;
   const totalTodos = todos.length;
 
@@ -53,6 +55,8 @@ export const TodoProvider = (props) => {
         searchedTodos,
         completeTodo,
         deleteTodo,
+        openModal,
+        setOpenModal,
       }}
     >
       {props.children}

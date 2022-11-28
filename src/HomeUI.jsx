@@ -5,10 +5,18 @@ import { TodoList } from "./components/TodoList";
 import { TodoItem } from "./components/TodoItem";
 import { CreateTodoButton } from "./components/CreateTodoButton";
 import { TodoContext } from "./TodoContext";
+import { Modal } from "./Modal";
 
 export const HomeUI = () => {
-  const { error, loading, searchedTodos, completeTodo, deleteTodo } =
-    useContext(TodoContext);
+  const {
+    error,
+    loading,
+    searchedTodos,
+    completeTodo,
+    deleteTodo,
+    openModal,
+    SetOpenModal,
+  } = useContext(TodoContext);
   return (
     <>
       <TodoCounter />
@@ -28,7 +36,12 @@ export const HomeUI = () => {
           />
         ))}
       </TodoList>
-      <CreateTodoButton />
+      {!!openModal && (
+        <Modal>
+          <p>MODALLL</p>
+        </Modal>
+      )}
+      <CreateTodoButton SetOpenModal={SetOpenModal} openModal={openModal} />
     </>
   );
 };
